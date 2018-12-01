@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+{% block content %}
+<br>
+<table>
+    <tr>
+        <td>Username: </td><td>{{ user.username }}</td>
+    </tr>
+    <tr>
+        <td>First Name: </td><td>{{ user.first_name }}</td>
+    </tr>
+    <tr>
+        <td>Last Name: </td><td>{{ user.last_name }}</td>
+    </tr>
+    <tr>
+        <td>Email: </td><td>{{ user.email }}</td>
+    </tr>
+     <tr>
+        <td>Joined: </td><td>{{ user.date_joined }}</td>
+    </tr>
+</table>
+
+
+<br><br>
+{% if user.is_authenticated %}
+<ul>
+<li><a href="{% url 'accounts:change_password' %}">Change password</a></li>
+<li><a href="{% url 'accounts:edit_profile' %}">Edit your profile</a></li>
+</ul>
+{% endif %}
+{% endblock content %}

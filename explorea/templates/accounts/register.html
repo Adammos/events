@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+
+{% block title %}
+<title>Register</title>
+{% endblock title %}
+
+{% block content %}
+<div class="profile-main-content">
+  <div class="profile-left-content">
+    
+  </div>
+  <div class="profile-right-content">
+    <div class="login-inner-content">
+      
+      <div>
+
+        <h2>Register</h2>
+        
+        <form method="post">
+          {% csrf_token %}
+            <table>
+            {% for field in form.visible_fields %}
+              <tr>
+                  {% for error in field.errors %}
+                  {{ error }}
+                  {% endfor %}
+
+                  <td>{{ field.label_tag}}</td><td>{{ field }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+</div>
+{% endblock content %}

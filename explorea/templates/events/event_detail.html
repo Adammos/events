@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	<title>Event Detail</title>
+{% endblock title %}
+
+{% block content %}
+<p><strong>{{ event.name }}</strong></p>
+<p>host: {{ event.host }}</p>
+<p>Description: {{ event.description }}</p>
+<p>Location: {{ event.location }}</p>
+<p>Category: {{ event.category }}</p>
+<br />
+<br />
+<p><strong>Current Event Runs</strong></p>
+{% if runs %}
+    <ul>
+     	{% for run in runs %}
+    	<li>{{ run.date }} - {{ run.seats_available }} available seats, for only ${{ run.price }}</li>
+
+    	{% endfor %}
+     </ul>
+{% else %}
+<p>There are not events taking place for this event</p>
+{% endif %}
+
+   
+
+{% endblock content %}

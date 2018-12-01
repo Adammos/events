@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+ 	<title>Event Runs</title>
+{% endblock title %}
+
+{% block content %}
+<h2>All Event Runs:</h2>
+<ul>
+	{% for eventRun in eventRuns %}
+		<li>{{ eventRun.event }} - {{ eventRun.date }} - {{ eventRun.seats_available }} - {{ eventRun.price }}
+		 <a href="{% url 'events:update_eventrun' eventRun.pk %}">Update</a> <a href="{% url 'events:remove_eventrun' eventRun.pk %}">Remove</a></li>
+	{% endfor %}
+</ul>
+
+{% endblock content %}
