@@ -15,11 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import RedirectView
+from django.conf.urls.static import static
+from django.conf import settings
+
+from explorea.events import views
 
 urlpatterns = [
+    path('home/', views.index, name='index'),
 	path('events/', include('explorea.events.urls', namespace='events')),
 	path('accounts/', include('explorea.accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
-    path('', RedirectView.as_view(url='/events/', permanent=True)),
 ]
+
+# in production a dedicated server is used to serve media
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

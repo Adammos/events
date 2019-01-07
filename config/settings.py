@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'explorea.events',
-    #'explorea.accounts',
+    'explorea.accounts',
+    'imagekit',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,6 @@ LOGIN_URL = '/accounts/login/'
 STATICFILES_DIRS = [
     os.path.join(APPS_DIR, 'static'),
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(APPS_DIR, 'media')

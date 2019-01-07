@@ -1,15 +1,31 @@
 {% extends 'base.html' %}
+{% load event_tags %}
 
 {% block title %}
 	<title>Event Detail</title>
 {% endblock title %}
 
 {% block content %}
-<p><strong>{{ event.name }}</strong></p>
+<h2>{{ event.name }} | <a href="{% url 'events:update_event' event.slug %}">UPDATE</a></h2>
 <p>host: {{ event.host }}</p>
 <p>Description: {{ event.description }}</p>
 <p>Location: {{ event.location }}</p>
 <p>Category: {{ event.category }}</p>
+<div class="main-image">
+    {% if event|has:'main_image' %}
+    <img src="{{ event.main_image.url }}">
+    {% else %}
+    <div class="not-available"></div>
+    {% endif %}
+</div>
+<!--Image slideshow-->
+<div class="owl-carousel">
+    <span class="owl-nav"></span>
+    <span class="owl-prev"></span>
+{% for image in event.album.image_set.all %}
+<img src="{{ image.image.url }}" alt="{{ image.title }}">
+{% endfor %}
+</div>
 <br />
 <br />
 <p><strong>Current Event Runs</strong></p>

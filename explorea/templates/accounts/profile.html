@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load account_tags %}
 
-{% block title %}Profile{% endblock %}
+{% block title %}<title>Profile</title>{% endblock %}
 {% block content %}
 <br>
 <table>
@@ -18,6 +20,15 @@
     </tr>
      <tr>
         <td>Joined: </td><td>{{ user.date_joined }}</td>
+    </tr>
+    <tr>
+        <td>
+        {% if user.profile.avatar|has:'url' %}
+            <img class="avatar" src="{{ user.profile.avatar.url }}">
+        {% else %}
+            <img src="{% static 'img/avatar.png' %}">
+        {% endif %}
+        </td>
     </tr>
 </table>
 

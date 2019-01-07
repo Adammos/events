@@ -7,9 +7,8 @@
 
     {% endblock title %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/accounts.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/event_listing.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 </head>
 <body>
@@ -21,5 +20,21 @@
     {% endblock content %}
 
     {% include 'footer.html' %}
+    {% block scripts %}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            nav:true,
+            dots:false,
+            autoHeight:true,
+            autoWidth: true,
+        })
+    });
+    </script>
+    {% endblock %}
 </body>
 </html>
